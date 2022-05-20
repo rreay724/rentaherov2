@@ -12,26 +12,29 @@ const Header = () => {
       <div>
         <ul className="flex space-x-10">
           <li
-            className="cursor-pointer text-lg "
+            className="cursor-pointer text-lg transition duration-300 ease-in-out hover:text-gray-300"
             onClick={() => router.push('/')}
           >
             Home
           </li>
-          <li className="cursor-pointer text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110">
+          <li
+            onClick={() => router.push('/heroes')}
+            className="cursor-pointer text-lg transition duration-300 ease-in-out hover:text-gray-300"
+          >
             Heroes
           </li>
-          <li className="cursor-pointer text-lg  transition ease-in-out hover:-translate-y-1 hover:scale-110">
+          <li className="cursor-pointer text-lg transition duration-300 ease-in-out hover:text-gray-300">
             About Us
           </li>
-          <li className="cursor-pointer text-lg  transition ease-in-out hover:-translate-y-1 hover:scale-110">
+          <li className="cursor-pointer text-lg transition duration-300 ease-in-out hover:text-gray-300">
             Contact
           </li>
-          <li className="cursor-pointer text-lg  transition ease-in-out hover:-translate-y-1 hover:scale-110"></li>
+          <li className="cursor-pointer text-lg transition duration-300 ease-in-out hover:text-gray-300"></li>
           <li>
             <Link href="/cart" passHref>
               <div className="relative cursor-pointer">
                 <Image src="/img/cart.png" alt="" width="30px" height="30px" />
-                <div className="text-black absolute top-[-10px] right-[-10px] flex h-[20px] w-[20px] items-center justify-center rounded-lg bg-white p-[3px] font-bold">
+                <div className="absolute top-[-10px] right-[-10px] flex h-[20px] w-[20px] items-center justify-center rounded-lg bg-white p-[3px] font-bold text-black-default">
                   1
                 </div>
               </div>

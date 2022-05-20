@@ -1,14 +1,20 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
-const HeroCard = ({ imgSrc, name, description }) => {
+const HeroCard = ({ hero }) => {
+  const router = useRouter()
   return (
-    <div className="h-[44vh] w-[20vw] rounded-lg border bg-black-light text-white shadow-2xl">
-      <div className="items-center justify-center   text-center">
-        <Image src={imgSrc} width={400} height={250} objectFit="cover" />
-        <h4 className="text-black pt-8 text-lg font-semibold">{name}</h4>
-        <p className="text-md py-3">{description}</p>
+    <div className="h-[32rem] w-[15rem] rounded-lg border bg-black-light  text-white shadow-2xl">
+      <div className="items-center justify-center text-center">
+        <h4 className="text-black py-2 text-lg font-semibold">{hero.name}</h4>
+
+        <Image src={hero.img} width={250} height={250} objectFit="cover" />
+        <p className="text-md py-3 px-2">{hero.summary}</p>
         <div className="pt-5">
-          <button className="cursor-pointer border-4 border-black-superDuperLight py-2 px-8 transition ease-in-out hover:-translate-y-1 hover:scale-110">
+          <button
+            onClick={() => router.push(`/heroes/${hero._id}`)}
+            className="h-10 w-40 cursor-pointer bg-blue-500 text-white transition duration-700 ease-in-out hover:border-4 hover:border-blue-500 hover:bg-black-medium hover:font-bold hover:text-blue-500"
+          >
             Hero Profile
           </button>
         </div>

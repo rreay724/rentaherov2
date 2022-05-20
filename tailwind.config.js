@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        heroBackground: "url('/img/background.jpeg')",
+      },
       colors: {
         black: {
           default: '#000000',
