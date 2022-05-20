@@ -4,12 +4,12 @@ import { useRouter } from 'next/router'
 const HeroCard = ({ hero }) => {
   const router = useRouter()
   return (
-    <div className="h-[32rem] w-[15rem] rounded-lg border bg-black-light  text-white shadow-2xl">
+    <div className="h-[24rem] w-[15rem] rounded-lg border bg-black-light  text-white shadow-2xl">
       <div className="items-center justify-center text-center">
         <h4 className="text-black py-2 text-lg font-semibold">{hero.name}</h4>
 
         <Image src={hero.img} width={250} height={250} objectFit="cover" />
-        <p className="text-md py-3 px-2">{hero.summary}</p>
+        {/* <p className="text-md py-3 px-2">{hero.summary}</p> */}
         <div className="pt-5">
           <button
             onClick={() => router.push(`/heroes/${hero._id}`)}

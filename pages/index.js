@@ -6,30 +6,6 @@ import axios from 'axios'
 
 const Home = ({ heroes }) => {
   const router = useRouter()
-  // const heroes = [
-  //   {
-  //     _id: 123,
-  //     imgSrc: '/img/batman.jpg',
-  //     name: 'Batman',
-  //     description:
-  //       'test description for the dark knight. The most brutal knight in all of the darkness. Bats, boomerangs, battle bat galactica',
-  //   },
-  //   {
-  //     _id: 125,
-  //     imgSrc: '/img/batman.jpg',
-  //     name: 'Batman',
-  //     description:
-  //       'test description for the dark knight. The most brutal knight in all of the darkness. Bats, boomerangs, battle bat galactica',
-  //   },
-  //   {
-  //     _id: 144,
-  //     imgSrc: '/img/batman.jpg',
-  //     name: 'Batman',
-  //     description:
-  //       'test description for the dark knight. The most brutal knight in all of the darkness. Bats, boomerangs, battle bat galactica',
-  //   },
-  // ]
-  console.log('Heroes', heroes)
   return (
     <div className="">
       <Head>
