@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 const HeroCard = ({ hero }) => {
   const router = useRouter()
   return (
-    <div className="h-[24rem] w-[15rem] rounded-lg border bg-black-light  text-white shadow-2xl">
+    <div className="h-[24rem] w-[15rem] rounded-lg border border-black-default bg-black-light  text-white shadow-2xl">
       <div className="items-center justify-center text-center">
         <h4 className="text-black py-2 text-lg font-semibold">{hero.name}</h4>
 

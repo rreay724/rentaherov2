@@ -5,9 +5,9 @@ import { useRouter } from 'next/router'
 const Header = () => {
   const router = useRouter()
   return (
-    <div className="sticky top-0 z-50 flex w-full items-center justify-between bg-black-default px-10 py-5 text-white ">
-      <div>
-        <h1 className="text-2xl font-bold">Rent-a-Hero</h1>
+    <div className="sticky top-0 z-50 flex items-center justify-center bg-black-default px-10 py-5 text-white md:justify-between ">
+      <div className="hidden md:flex">
+        <h1 className="text-2xl font-bold md:visible">Rent-a-Hero</h1>
       </div>
       <div>
         <ul className="flex space-x-10">
@@ -24,7 +24,7 @@ const Header = () => {
             Heroes
           </li>
           <li className="cursor-pointer text-lg transition duration-300 ease-in-out hover:text-gray-300">
-            About Us
+            About
           </li>
           <li className="cursor-pointer text-lg transition duration-300 ease-in-out hover:text-gray-300">
             Contact
