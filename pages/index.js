@@ -1,46 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { HeroCard } from '../components/index'
+import { HeroCard, Services } from '../components/index'
+import axios from 'axios'
 
-const Home = () => {
+const Home = ({ heroes }) => {
   const router = useRouter()
-  const heroes = [
-    {
-      imgSrc: '/img/batman.jpg',
-      name: 'Batman',
-      description:
-        'test description for the dark knight. The most brutal knight in all of the darkness. Bats, boomerangs, battle bat galactica',
-    },
-    {
-      imgSrc: '/img/batman.jpg',
-      name: 'Batman',
-      description:
-        'test description for the dark knight. The most brutal knight in all of the darkness. Bats, boomerangs, battle bat galactica',
-    },
-    {
-      imgSrc: '/img/batman.jpg',
-      name: 'Batman',
-      description:
-        'test description for the dark knight. The most brutal knight in all of the darkness. Bats, boomerangs, battle bat galactica',
-    },
-  ]
   return (
     <div className="">
       <Head>
         <title>Rent a Hero V2</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="grid h-screen place-items-center">
-        <Image
-          src="/img/background2.jpeg"
-          layout="fill"
-          alt=""
-          objectFit="cover"
-        />
-        <div className="absolute left-0 right-0 m-auto h-[17rem] w-[40rem] bg-black-default text-white opacity-90">
+      <div className="grid h-screen bg-[url('/img/background.jpg')] bg-cover">
+        <div className=" m-auto h-[17rem] w-[30rem] bg-black-default text-white opacity-90 md:w-[40rem]">
           <div className="pt-10">
-            <h2 className="text-center text-5xl font-bold">Rent a Hero</h2>
+            <h2 className="text-center text-5xl font-bold ">Rent a Hero</h2>
             <div className="mx-40 my-5 border-4 border-b border-blue-500" />
             <p className="text-center text-lg">
               Check out our growing list of heroes for rent
@@ -56,15 +31,19 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div>
-        <h2 className="text-center">Featured Heroes</h2>
-        <div className="flex items-center justify-center space-x-10 px-24 py-5 text-center">
-          {heroes.map((hero) => (
-            <HeroCard
-              imgSrc={hero.imgSrc}
-              name={hero.name}
-              description={hero.description}
-            />
+      {/* Middle Section */}
+      <div className="bg-black-superLight">
+        <Services />
+      </div>
+      {/* Bottom section */}
+      <div className="items-center bg-black-superDuperLight md:px-28 lg:px-10 xl:px-36">
+        <h2 className="pt-5 text-center text-3xl font-bold text-white">
+          Featured Heroes
+        </h2>
+        <div className="mx-[20vw] mb-10 border-b border-white py-2" />
+        <div className="grid grid-cols-1 items-center justify-items-center gap-5 py-5 md:grid-cols-2 lg:grid-cols-4">
+          {heroes.slice(0, 4).map((hero) => (
+            <HeroCard key={hero._id} hero={hero} />
           ))}
         </div>
       </div>
@@ -73,3 +52,13 @@ const Home = () => {
 }
 
 export default Home
+
+export const getServerSideProps = async () => {
+  const res = await axios.get('http://localhost:3000/api/heroes')
+
+  return {
+    props: {
+      heroes: res.data,
+    },
+  }
+}
