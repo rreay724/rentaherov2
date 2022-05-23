@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { HeroCard, Services } from '../components/index'
 import axios from 'axios'
@@ -54,7 +55,7 @@ const Home = ({ heroes }) => {
 export default Home
 
 export const getServerSideProps = async () => {
-  const res = await axios.get('http://localhost:3000/api/heroes')
+  const res = await axios.get(`https://rentaherov2.vercel.app/api/heroes`)
 
   return {
     props: {
