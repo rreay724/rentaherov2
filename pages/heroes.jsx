@@ -13,7 +13,7 @@ const Heroes = ({ heroes }) => {
 export default Heroes
 
 export const getServerSideProps = async () => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_LOCAL_URL}/api/heroes`)
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_HOST_URL}/api/heroes`)
   return {
     props: {
       heroes: res.data,
