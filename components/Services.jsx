@@ -38,12 +38,12 @@ const Services = () => {
     {
       icon: <GiGlassCelebration />,
       title: 'Bar and Bat Mitzvahs',
-      info: 'Mazel Tov! Want to show that special young man or woman how much you care about them and their accomplishments? Hire one of our super heroes to make their special day even brighter.',
+      info: 'Mazel Tov! Hire one of our heroes to make their day even more special',
     },
     {
       icon: <FaGraduationCap />,
       title: 'Commencement Speeches',
-      info: 'Want to send your new grads off into the world with words of wisdom? Bring in one of our heroes to give them a pep talk that will prepare them to go out and make the world a better place.',
+      info: 'Want to send your new grads off into the world with words of wisdom? Our heroes have the best words.',
     },
     {
       icon: <GiPoliceBadge />,
@@ -52,16 +52,16 @@ const Services = () => {
     },
   ]
   return (
-    <div className="pb-20">
+    <div className=" pb-20">
       <h1 className="pt-10 text-center text-3xl font-bold text-white">
         Services
       </h1>
       <div className="mx-[20vw] mb-10 border-b border-white py-2" />
 
-      <div className="grid grid-cols-2 items-center justify-items-center text-center lg:grid-cols-4">
+      <div className="md:text:md grid grid-cols-2 items-center justify-items-center text-center text-sm lg:grid-cols-4">
         {services.map((service) => (
           <div
-            className="h-60 w-60 justify-center pt-5 text-gray-200"
+            className="h-60 w-40 justify-center pt-5 text-gray-200 md:w-60"
             key={service.title}
           >
             <span className="grid grid-cols-1 place-items-center text-4xl text-blue-700">
