@@ -35,16 +35,16 @@ const Home = ({ heroes }) => {
         </div>
       </div>
       {/* Middle Section */}
-      <div className="bg-black-superLight">
+      <div className=" bg-gradient-to-b from-black-superLight to-black-superDuperLight">
         <Services />
       </div>
       {/* Bottom section */}
-      <div className="items-center bg-black-superDuperLight md:px-28 lg:px-10 xl:px-36">
-        <h2 className="pt-5 text-center text-3xl font-bold text-white">
+      <div className="items-center  bg-gradient-to-t from-black-superLight to-black-superDuperLight md:px-28 lg:px-10 xl:px-36">
+        <h2 className="pt-5 text-center text-3xl font-bold text-white ">
           Featured Heroes
         </h2>
         <div className="mx-[20vw] mb-10 border-b border-white py-2" />
-        <div className="grid grid-cols-1 items-center justify-items-center gap-5 py-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 items-center justify-items-center gap-5 pb-20 pt-5 md:grid-cols-2 lg:grid-cols-4">
           {heroes.slice(0, 4).map((hero) => (
             <HeroCard key={hero._id} hero={hero} />
           ))}
