@@ -25,8 +25,8 @@ const Home = ({ heroes }) => {
             <div className="pt-5 text-center">
               <button
                 onClick={() => router.push('/heroes')}
-                className=" h-10 w-40 cursor-pointer bg-blue-500 text-white transition duration-700 ease-in-out hover:border-4 
-                hover:border-blue-500 hover:bg-black-medium hover:font-bold hover:text-blue-500"
+                className=" h-10 w-40 cursor-pointer rounded-sm bg-blue-500 text-white transition duration-700 
+                ease-in-out hover:border-4 hover:border-blue-500 hover:bg-black-medium hover:font-bold hover:text-blue-500"
               >
                 Heroes
               </button>
@@ -35,7 +35,7 @@ const Home = ({ heroes }) => {
         </div>
       </div>
       {/* Middle Section */}
-      <div className=" bg-gradient-to-b from-black-superLight to-black-superDuperLight">
+      <div className="bg-gradient-to-b from-black-superLight to-black-superDuperLight px-0 md:px-20">
         <Services />
       </div>
       {/* Bottom section */}

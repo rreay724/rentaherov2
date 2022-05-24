@@ -13,7 +13,8 @@ const HeroCard = ({ hero }) => {
         <div className="pt-5">
           <button
             onClick={() => router.push(`/heroes/${hero._id}`)}
-            className="h-10 w-40 cursor-pointer bg-blue-500 text-white transition duration-700 ease-in-out hover:border-4 hover:border-blue-500 hover:bg-black-medium hover:font-bold hover:text-blue-500"
+            className="h-10 w-40 cursor-pointer rounded-sm bg-blue-500 text-white transition duration-700 ease-in-out hover:border-4 
+            hover:border-blue-500 hover:bg-black-medium hover:font-bold hover:text-blue-500"
           >
             Hero Profile
           </button>
