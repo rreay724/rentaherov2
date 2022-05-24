@@ -14,11 +14,13 @@ const Home = ({ heroes }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="grid h-screen bg-[url('/img/background.jpg')] bg-cover">
-        <div className=" m-auto h-[17rem] w-[30rem] bg-black-default text-white opacity-90 md:w-[40rem]">
-          <div className="pt-10">
-            <h2 className="text-center text-5xl font-bold ">Rent a Hero</h2>
-            <div className="mx-40 my-5 border-4 border-b border-blue-500" />
-            <p className="text-center text-lg">
+        <div className="m-auto h-[13rem] bg-black-default  text-white opacity-90 md:h-[15rem] ">
+          <div className="w-[20rem] pt-8 md:w-[40rem]">
+            <h2 className="pb-5 text-center text-2xl font-bold md:text-5xl">
+              Rent a Hero
+            </h2>
+            {/* <div className="mx-40 my-5 border-4 border-b border-blue-500" /> */}
+            <p className="text-center text-sm md:text-xl">
               Check out our growing list of heroes for rent
             </p>
             <div className="pt-5 text-center">
@@ -55,7 +57,8 @@ const Home = ({ heroes }) => {
 export default Home
 
 export const getServerSideProps = async () => {
-  const res = await axios.get(`https://rentaherov2.vercel.app/api/heroes`)
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_HOST_URL}/api/heroes`)
+
 
   return {
     props: {
