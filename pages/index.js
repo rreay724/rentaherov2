@@ -14,19 +14,19 @@ const Home = ({ heroes }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="grid h-screen bg-[url('/img/background.jpg')] bg-cover">
-        <div className="m-auto h-[13rem] bg-black-default  text-white opacity-90 md:h-[15rem] ">
+        <div className="m-auto h-[13rem] rounded-2xl  bg-gradient-to-b from-black-default to-black-light text-white opacity-90 md:h-[15rem]">
           <div className="w-[20rem] pt-8 md:w-[40rem]">
             <h2 className="pb-5 text-center text-2xl font-bold md:text-5xl">
               Rent a Hero
             </h2>
-            {/* <div className="mx-40 my-5 border-4 border-b border-blue-500" /> */}
             <p className="text-center text-sm md:text-xl">
               Check out our growing list of heroes for rent
             </p>
             <div className="pt-5 text-center">
               <button
                 onClick={() => router.push('/heroes')}
-                className=" h-10 w-40 cursor-pointer bg-blue-500 text-white transition duration-700 ease-in-out hover:border-4 hover:border-blue-500 hover:bg-black-medium hover:font-bold hover:text-blue-500"
+                className=" h-10 w-40 cursor-pointer bg-blue-500 text-white transition duration-700 ease-in-out hover:border-4 
+                hover:border-blue-500 hover:bg-black-medium hover:font-bold hover:text-blue-500"
               >
                 Heroes
               </button>
@@ -58,7 +58,6 @@ export default Home
 
 export const getServerSideProps = async () => {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_HOST_URL}/api/heroes`)
-
 
   return {
     props: {
