@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { HeroCard, Services } from '../components/index'
 import axios from 'axios'
@@ -57,6 +58,7 @@ export default Home
 
 export const getServerSideProps = async () => {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_HOST_URL}/api/heroes`)
+
 
   return {
     props: {
