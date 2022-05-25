@@ -4,20 +4,28 @@ import Image from 'next/image'
 const Hero = ({ hero }) => {
   console.log(hero.additionalServices)
   return (
-    <div className="justify-center  bg-black-superLight py-20  text-white">
+    <div className="justify-center  bg-black-superLight pt-20 pb-10 text-white">
       <div className="mx-20 flex-none items-center justify-center md:mx-40 lg:flex">
-        <img
-          src={hero.profileImage}
-          alt=""
-          className="h-[30rem] w-[35rem] object-contain"
-        />
+        <div>
+          <img
+            src={hero.profileImage}
+            alt=""
+            className="h-[30rem] w-[35rem] object-contain"
+          />
+          <div className="flex justify-center py-10">
+            {hero.additionalImages.map((image) => (
+              <img src={image.src} className="h-20 w-20 object-contain" />
+            ))}
+          </div>
+        </div>
+
         <div className="flex justify-center pb-10 pr-20">
           <div className="space-y-3 pl-20">
             <h2 className="text-3xl">{hero.name}</h2>
             <div className="pb-2">
               <span>Affiliation: {hero.affiliation}</span>
             </div>
-            <span className="text-lg">${hero.price}.00 per day</span>
+            <span className="">${hero.price}.00 per day</span>
             <p className="text-lg">{hero.summary}</p>
             <div className="flex ">
               {hero.additionalServices.map((service) => (
@@ -39,11 +47,6 @@ const Hero = ({ hero }) => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex justify-center">
-        {hero.additionalImages.map((image) => (
-          <img src={image.src} className="h-20 w-20 object-contain" />
-        ))}
       </div>
     </div>
   )
