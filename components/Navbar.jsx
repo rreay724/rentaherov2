@@ -11,25 +11,15 @@ const Header = () => {
       </div>
       <div>
         <ul className="flex items-center space-x-5 md:space-x-10">
-          <li
-            className="text-md cursor-pointer transition duration-300 ease-in-out hover:text-gray-300 md:text-lg"
-            onClick={() => router.push('/')}
-          >
+          <li className="navbar-item" onClick={() => router.push('/')}>
             Home
           </li>
-          <li
-            onClick={() => router.push('/heroes')}
-            className="cursor-pointertext-md transition  duration-300 ease-in-out hover:text-gray-300 md:text-lg"
-          >
+          <li onClick={() => router.push('/heroes')} className="navbar-item">
             Heroes
           </li>
-          <li className="text-md cursor-pointer transition  duration-300 ease-in-out hover:text-gray-300 md:text-lg">
-            About
-          </li>
-          <li className="text-md cursor-pointer transition  duration-300 ease-in-out hover:text-gray-300 md:text-lg">
-            Contact
-          </li>
-          <li className="text-md cursor-pointer transition  duration-300 ease-in-out hover:text-gray-300 md:text-lg"></li>
+          <li className="navbar-item">About</li>
+          <li className="navbar-item">Contact</li>
+          <li className="navbar-item"></li>
           <li>
             <Link href="/cart" passHref>
               <div className="relative w-7 cursor-pointer">
