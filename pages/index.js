@@ -7,6 +7,7 @@ import axios from 'axios'
 
 const Home = ({ heroes }) => {
   const router = useRouter()
+  const heroArray = [...heroes].sort(() => 0.5 - Math.random())
   return (
     <div className="">
       <Head>
@@ -45,7 +46,7 @@ const Home = ({ heroes }) => {
         </h2>
         <div className="mx-[20vw] mb-10 border-b border-white py-2" />
         <div className="grid grid-cols-1 items-center justify-items-center gap-5 pb-20 pt-5 md:grid-cols-2 lg:grid-cols-4">
-          {heroes.slice(0, 4).map((hero) => (
+          {heroArray.slice(0, 4).map((hero) => (
             <HeroCard key={hero._id} hero={hero} />
           ))}
         </div>
