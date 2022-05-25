@@ -28,6 +28,20 @@ const HeroSchema = new mongoose.Schema(
         },
       ],
     },
+
+    affiliation: {
+      type: String,
+      required: true,
+    },
+
+    profileImage: {
+      type: String,
+      required: true,
+    },
+
+    additionalImages: {
+      type: [{ src: { type: String, required: false } }],
+    },
   },
   { timestamps: true }
 )
