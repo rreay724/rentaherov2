@@ -7,7 +7,7 @@ const Hero = ({ hero }) => {
 
   console.log(hero.additionalServices)
   return (
-    <div className="justify-center  bg-black-superLight pt-20 pb-10 text-white">
+    <div className="min-h-[50rem]  justify-center bg-black-superLight pt-0 pb-10 text-white md:pt-40">
       <div className="mx-20 flex-none items-center justify-center md:mx-40 lg:flex">
         <div>
           <img
