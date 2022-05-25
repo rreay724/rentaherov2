@@ -1,7 +1,10 @@
 import axios from 'axios'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const Hero = ({ hero }) => {
+  const [quantity, setQuantity] = useState(1)
+
   console.log(hero.additionalServices)
   return (
     <div className="justify-center  bg-black-superLight pt-20 pb-10 text-white">
@@ -10,7 +13,7 @@ const Hero = ({ hero }) => {
           <img
             src={hero.profileImage}
             alt=""
-            className="h-[30rem] w-[35rem] object-contain"
+            className="h-[20rem] w-[35rem] object-contain"
           />
           <div className="flex justify-center py-10">
             {hero.additionalImages.map((image) => (
@@ -21,12 +24,17 @@ const Hero = ({ hero }) => {
 
         <div className="flex justify-center pb-10 pr-20">
           <div className="space-y-3 pl-20">
-            <h2 className="text-3xl">{hero.name}</h2>
-            <div className="pb-2">
-              <span>Affiliation: {hero.affiliation}</span>
+            <div className="space-y-1 pb-6">
+              <h2 className="text-2xl md:text-3xl">{hero.name}</h2>
+              <p className="text-lg">{hero.summary}</p>
+
+              <div className="pb-2">
+                <span>Affiliation: {hero.affiliation}</span>
+              </div>
             </div>
+
             <span className="">${hero.price}.00 per day</span>
-            <p className="text-lg">{hero.summary}</p>
+
             <div className="flex ">
               {hero.additionalServices.map((service) => (
                 <div key={service._id} className=" flex">
@@ -37,6 +45,17 @@ const Hero = ({ hero }) => {
                 </div>
               ))}
             </div>
+            <div className="flex space-x-2">
+              <label>Number of days</label>
+              <input
+                onChange={(e) => setQuantity(e.target.value)}
+                type="number"
+                defaultValue={1}
+                className="w-10 text-center text-black-default"
+                min="1"
+              />
+            </div>
+
             <div className="pt-3">
               <button
                 className="w-[20rem] border bg-blue-500 py-3 px-5 text-sm text-white transition duration-700  
