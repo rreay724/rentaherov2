@@ -5,7 +5,7 @@ const Hero = ({ hero }) => {
   console.log(hero.additionalServices)
   return (
     <div className="justify-center  bg-black-superLight py-20  text-white">
-      <div className="mx-20 flex-none items-center justify-between md:mx-40 lg:flex">
+      <div className="mx-20 flex-none items-center justify-center md:mx-40 lg:flex">
         <img
           src={hero.profileImage}
           alt=""
