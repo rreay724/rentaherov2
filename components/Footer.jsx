@@ -2,7 +2,7 @@ import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs'
 
 const Footer = () => {
   return (
-    <div className="z-[999] bg-black-default py-24 px-5 text-[#F8F0E3]">
+    <div className="z-[999] bg-black-light py-24 px-5 text-[#F8F0E3]">
       <div className="grid grid-cols-1 items-center space-y-10  px-10  md:grid-cols-2 md:space-y-5 lg:grid-cols-4 lg:justify-between lg:justify-items-center">
         <div className="space-y-5">
           <h1 className="text-2xl text-white">Rent a Hero</h1>
