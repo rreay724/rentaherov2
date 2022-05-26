@@ -1,23 +1,44 @@
 import axios from 'axios'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Hero = ({ hero }) => {
-  const [quantity, setQuantity] = useState(1)
+  const quantity = 1
+  const [hours, setHours] = useState(1)
+  const [service, setService] = useState('')
+  const [image, setImage] = useState(hero.profileImage)
 
-  console.log(hero.additionalServices)
+  const handleHourChange = (e) => {
+    setHours(e.target.value)
+  }
+
+  const handleServiceChange = (e) => {
+    setService(e.target.value)
+  }
+
+  const selectImage = (imageSrc) => {
+    setImage(imageSrc)
+  }
+
   return (
-    <div className="min-h-[50rem]  justify-center bg-black-superLight pt-0 pb-10 text-white md:pt-40">
-      <div className="mx-20 flex-none items-center justify-center md:mx-40 lg:flex">
+    <div className="min-h-[50rem] justify-center bg-gradient-to-b from-black-superLight to-black-superDuperLight pt-5 pb-10 text-white ">
+      <div className="flex-none items-center justify-center md:mx-40 lg:flex">
         <div>
           <img
-            src={hero.profileImage}
+            src={image}
             alt=""
-            className="h-[20rem] w-[35rem] object-contain"
+            className="h-[20rem] w-[35rem] object-contain md:h-[40rem]"
           />
           <div className="flex justify-center py-10">
             {hero.additionalImages.map((image) => (
-              <img src={image.src} className="h-20 w-20 object-contain" />
+              <div className="px-2">
+                <img
+                  src={image.src}
+                  className="h-20 w-20 cursor-pointer object-cover"
+                  key={image.src}
+                  onClick={() => selectImage(image.src)}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -26,34 +47,44 @@ const Hero = ({ hero }) => {
           <div className="space-y-3 pl-20">
             <div className="space-y-1 pb-6">
               <h2 className="text-2xl md:text-3xl">{hero.name}</h2>
-              <p className="text-lg">{hero.summary}</p>
+              <p className="text-lg text-gray-300">{hero.summary}</p>
 
-              <div className="pb-2">
+              <div className="pb-2 text-gray-300">
                 <span>Affiliation: {hero.affiliation}</span>
               </div>
+              <span className="text-gray-300">${hero.price}.00 per hour</span>
             </div>
-
-            <span className="">${hero.price}.00 per day</span>
-
-            <div className="flex ">
-              {hero.additionalServices.map((service) => (
-                <div key={service._id} className=" flex">
-                  <div className="flex items-center space-x-2 px-1">
-                    <input type="checkbox" />
-                    <p>{service.text}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="">
+              <div>
+                <label>Service</label>
+              </div>
+              <select
+                className="h-8  w-[10rem] bg-black-superDuperLight md:w-[20rem]"
+                value={service}
+                onChange={handleServiceChange}
+              >
+                {hero.additionalServices.map((service) => (
+                  <option name={service.text.toLowerCase()} key={service.text}>
+                    {service.text}
+                  </option>
+                ))}
+              </select>
             </div>
-            <div className="flex space-x-2">
-              <label>Number of days</label>
-              <input
-                onChange={(e) => setQuantity(e.target.value)}
-                type="number"
-                defaultValue={1}
-                className="w-10 text-center text-black-default"
-                min="1"
-              />
+            <div className="">
+              <div>
+                <label>Number of hours</label>
+              </div>
+              <select
+                className="h-8 w-[10rem] bg-black-superDuperLight text-white md:w-[20rem]"
+                value={hours}
+                onChange={handleHourChange}
+              >
+                {Array.from({ length: 24 }).map((hour, i) => (
+                  <option key={i} name={i + 1}>
+                    {i + 1}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="pt-3">
