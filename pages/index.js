@@ -14,7 +14,7 @@ const Home = ({ heroes }) => {
         <title>Rent a Hero V2</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="grid h-screen bg-[url('/img/background.jpg')] bg-cover">
+      <div className="grid h-[65vh] bg-[url('/img/background.jpg')] bg-cover">
         <div className="m-auto h-[13rem] rounded-2xl  bg-gradient-to-b from-black-default to-black-light text-white opacity-90 md:h-[15rem]">
           <div className="w-[20rem] pt-8 md:w-[40rem]">
             <h2 className="pb-5 text-center text-2xl font-bold md:text-5xl">
