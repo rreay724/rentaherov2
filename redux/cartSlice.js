@@ -13,7 +13,7 @@ const cartSlice = createSlice({
     addHero: (state, action) => {
       state.heroes.push(action.payload)
       state.quantity += 1
-      state.total += action.payload.price * action.payload.hours
+      state.total += action.payload.price * action.payload.quantity
     },
 
     reset: (state) => {
