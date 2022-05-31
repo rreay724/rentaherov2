@@ -33,7 +33,7 @@ const Heroes = ({ heroes }) => {
 
   return (
     <div className=" flex">
-      <div className="min-h-screen w-80 bg-black-default px-5 pt-20 text-white">
+      <div className="hidden min-h-screen w-80 bg-black-default px-5 pt-20 text-white md:inline-block ">
         <div className="">
           <div className="items-center border-b-2 border-t-2">
             <div
@@ -77,7 +77,7 @@ const Heroes = ({ heroes }) => {
           </div>
         </div>
       </div>
-      <div className="grid space-x-5 pl-10 pt-20 xl:grid-cols-5">
+      <div className="mx-auto grid grid-cols-2 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {heroes.map((hero) => (
           <HeroesPageCard hero={hero} />
         ))}

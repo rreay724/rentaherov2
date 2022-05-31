@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
   const router = useRouter()
+  const quantity = useSelector((state) => state.cart.quantity)
   return (
     <div className="sticky top-0 z-50 flex items-center justify-between bg-black-default px-10 py-5 text-white md:justify-between">
       <div className="hidden md:flex">
@@ -26,7 +28,7 @@ const Header = () => {
         <div className="relative w-7 cursor-pointer">
           <img src="/img/cart.png" className="" />
           <div className="absolute top-[-10px] right-[-10px] flex h-[20px] w-[20px] items-center justify-center rounded-lg bg-white p-[3px] font-bold text-black-default">
-            1
+            {quantity}
           </div>
         </div>
       </Link>
