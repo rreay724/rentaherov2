@@ -1,23 +1,29 @@
 import axios from 'axios'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { addHero } from '../../redux/cartSlice'
 
 const Hero = ({ hero }) => {
   const quantity = 1
   const [hours, setHours] = useState(1)
-  const [service, setService] = useState('')
+  const [selectedService, setSelectedService] = useState(
+    hero.additionalServices[0]
+  )
   const [image, setImage] = useState(hero.profileImage)
+  const [price, setPrice] = useState(hero.price)
+  const dispatch = useDispatch()
 
-  const handleHourChange = (e) => {
-    setHours(e.target.value)
-  }
-
-  const handleServiceChange = (e) => {
-    setService(e.target.value)
-  }
+  useEffect(() => {
+    setPrice(selectedService.price + hero.price * hours)
+  }, [selectedService, hours])
 
   const selectImage = (imageSrc) => {
     setImage(imageSrc)
+  }
+
+  const handleClick = () => {
+    dispatch(addHero({ ...hero, selectedService, price, quantity, hours }))
   }
 
   return (
@@ -60,11 +66,14 @@ const Hero = ({ hero }) => {
               </div>
               <select
                 className="h-8  w-[10rem] bg-black-superDuperLight md:w-[20rem]"
-                value={service}
-                onChange={handleServiceChange}
+                onChange={(e) => setSelectedService(JSON.parse(e.target.value))}
               >
                 {hero.additionalServices.map((service) => (
-                  <option name={service.text.toLowerCase()} key={service.text}>
+                  <option
+                    name={service.text.toLowerCase()}
+                    key={service.text}
+                    value={JSON.stringify(service)}
+                  >
                     {service.text}
                   </option>
                 ))}
@@ -76,11 +85,10 @@ const Hero = ({ hero }) => {
               </div>
               <select
                 className="h-8 w-[10rem] bg-black-superDuperLight text-white md:w-[20rem]"
-                value={hours}
-                onChange={handleHourChange}
+                onChange={(e) => setHours(e.target.value)}
               >
                 {Array.from({ length: 24 }).map((hour, i) => (
-                  <option key={i} name={i + 1}>
+                  <option key={i} name={i + 1} value={i + 1}>
                     {i + 1}
                   </option>
                 ))}
@@ -89,6 +97,7 @@ const Hero = ({ hero }) => {
 
             <div className="pt-3">
               <button
+                onClick={handleClick}
                 className="w-[20rem] border bg-blue-500 py-3 px-5 text-sm text-white transition duration-700  
             ease-in-out hover:border-blue-500 hover:bg-black-superLight hover:font-bold hover:text-blue-500"
               >
