@@ -6,6 +6,7 @@ import { HeroesPageCard } from '../components'
 const Heroes = ({ heroes }) => {
   const [affHidden, setAffHidden] = useState('hidden')
   const [serviceHidden, setServiceHidden] = useState('hidden')
+  const [affiliation, setAffiliation] = useState(null)
 
   const services = [
     'Birthday Party',
@@ -13,8 +14,6 @@ const Heroes = ({ heroes }) => {
     'Security Detail',
     'Speech',
   ]
-
-  const affiliation = ['Marvel', 'DC', 'Sparta', 'Fox Hound']
 
   const handleAffClick = () => {
     if (affHidden === 'hidden') {
@@ -31,8 +30,13 @@ const Heroes = ({ heroes }) => {
     }
   }
 
+  // deduplicate affiliation to list in sidebar
+  let affiliations = [
+    ...new Map(heroes.map((hero) => [hero['affiliation'], hero])).values(),
+  ]
+
   return (
-    <div className=" flex">
+    <div className="flex bg-gradient-to-t from-black-superLight to-black-superDuperLight">
       <div className="hidden min-h-screen w-80 bg-black-default px-5 pt-20 text-white md:inline-block ">
         <div className="">
           <div className="items-center border-b-2 border-t-2">
@@ -49,8 +53,19 @@ const Heroes = ({ heroes }) => {
                 className="space-y-4 pb-2 
                 transition duration-700 ease-in-out"
               >
-                {affiliation.map((aff) => (
-                  <li className="cursor-pointer">{aff}</li>
+                <li
+                  onClick={() => setAffiliation(null)}
+                  className="cursor-pointer"
+                >
+                  All
+                </li>
+                {affiliations.map((hero) => (
+                  <li
+                    className="cursor-pointer"
+                    onClick={() => setAffiliation(hero.affiliation)}
+                  >
+                    {hero.affiliation}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -77,10 +92,12 @@ const Heroes = ({ heroes }) => {
           </div>
         </div>
       </div>
-      <div className="mx-auto grid grid-cols-2 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {heroes.map((hero) => (
-          <HeroesPageCard hero={hero} />
-        ))}
+      <div className="mx-auto grid grid-cols-2 gap-8 p-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {affiliation !== null
+          ? heroes
+              .filter((hero) => hero.affiliation === affiliation)
+              .map((hero) => <HeroesPageCard hero={hero} />)
+          : heroes.map((hero) => <HeroesPageCard hero={hero} />)}
       </div>
     </div>
   )
