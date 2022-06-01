@@ -87,33 +87,40 @@ const Cart = () => {
   }
 
   return (
-    <div className="flex min-h-[80vh] justify-between">
-      <div>
-        {cart.heroes.map((hero) => (
-          <div className="flex h-40 items-center space-x-20 border-t-2 pl-10">
-            <img
-              onClick={() => router.push(`/heroes/${hero._id}`)}
-              src={hero.img}
-              className="h-20 w-20 cursor-pointer rounded-md object-cover"
-            />
-            <h2
-              className="cursor-pointer font-bold"
-              onClick={() => router.push(`/heroes/${hero._id}`)}
-            >
-              {hero.name}
-            </h2>
-            <span>Hours: {hero.hours}</span>
-            <span>Service: {hero.selectedService.text}</span>
-            <span>${hero.price}.00</span>
-          </div>
-        ))}
-      </div>
-      {/* Checkout details */}
-      <div className="w-80 rounded-lg border-2 p-10 shadow-lg">
+    <div className="flex min-h-[80vh] justify-between bg-black-superDuperLight px-40">
+      <div className="m-10 rounded-md bg-gray-300 px-20 text-black-default">
         <div>
-          <div className="flex justify-between">
+          {cart.heroes.map((hero) => (
+            <div className="flex h-40 w-[40rem] items-center justify-between space-x-10 pl-10">
+              <img
+                onClick={() => router.push(`/heroes/${hero._id}`)}
+                src={hero.img}
+                className="h-20 w-20 cursor-pointer rounded-md object-cover"
+              />
+
+              <div>
+                <h2
+                  className="cursor-pointer font-bold "
+                  onClick={() => router.push(`/heroes/${hero._id}`)}
+                >
+                  {hero.name}
+                </h2>
+                <p>Hours: {hero.hours}</p>
+                <p>Service: {hero.selectedService.text}</p>
+              </div>
+
+              <span>${hero.price}.00</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Checkout details */}
+      <div className="m-10 h-80 w-80 rounded-lg border-2 bg-gray-300 py-10 px-5 shadow-lg">
+        <div>
+          <div className="flex justify-between pt-20 pb-5">
             <label>Total:</label>
-            <span>{cart.total}</span>
+            <span>${cart.total}.00</span>
           </div>
           <PayPalScriptProvider
             options={{
