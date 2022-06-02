@@ -92,8 +92,8 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-[80vh] justify-center bg-gradient-to-r from-black-superLight to-black-superDuperLight lg:flex">
-      <div className="my-10 rounded-md bg-gray-100 px-10 text-black-default lg:min-w-[70rem]">
+    <div className="min-h-[80vh] justify-center space-y-5 bg-gradient-to-r from-black-superLight to-black-superDuperLight py-5 lg:flex lg:space-y-0">
+      <div className="mx-auto w-80 rounded-md bg-gray-100 px-10 py-10 text-black-default lg:min-w-[70rem]">
         <h2 className="border-b border-black-default pt-10 text-lg font-semibold">
           Hero Summary
         </h2>
@@ -102,30 +102,32 @@ const Cart = () => {
             <p className="pt-2">No heroes in cart</p>
           ) : (
             cart.heroes.map((hero) => (
-              <div className="flex h-40 items-center justify-between space-x-10 border-b border-black-default lg:w-[70rem]">
-                <div className="flex items-center space-x-10">
+              <div className="flex h-40 items-center justify-between border-b border-black-default">
+                <div className="flex items-center">
                   <div>
                     <img
                       onClick={() => router.push(`/heroes/${hero._id}`)}
                       src={hero.img}
-                      className="h-28 w-20 cursor-pointer rounded-md object-cover"
+                      className="mr-10 hidden h-28 w-20 cursor-pointer rounded-md object-cover lg:flex"
                     />
                   </div>
                   <div>
                     <h2
-                      className="cursor-pointer font-bold "
+                      className="md:text-md cursor-pointer text-sm font-bold"
                       onClick={() => router.push(`/heroes/${hero._id}`)}
                     >
                       {hero.name}
                     </h2>
-                    <p>Service: {hero.selectedService.text}</p>
+                    <p className="md:text-md text-sm">
+                      Service: {hero.selectedService.text}
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <p>Hours: {hero.hours}</p>
+                  <p className="md:text-md text-sm">Hours: {hero.hours}</p>
                 </div>
 
-                <span>${hero.price}.00</span>
+                <span className="md:text-md text-sm">${hero.price}.00</span>
               </div>
             ))
           )}
@@ -133,7 +135,7 @@ const Cart = () => {
       </div>
 
       {/* Checkout details */}
-      <div className="m-10 h-[22rem] w-80 rounded-lg border-2 bg-gray-100 px-5 pt-5 pb-10 shadow-lg">
+      <div className="mx-auto  h-[22rem] w-80 rounded-lg border-2 bg-gray-100 px-5 pt-5  shadow-lg">
         <div>
           <div className="space-y-2">
             <h2 className="font-semibold">Order Summary</h2>
