@@ -141,7 +141,7 @@ const Cart = () => {
             <h2 className="font-semibold">Order Summary</h2>
             <div>
               <div className="flex justify-between text-sm">
-                <label>Product Subtotal</label>
+                <label>Subtotal</label>
                 <p>${cart.total}.00</p>
               </div>
               <div className="flex justify-between text-sm">

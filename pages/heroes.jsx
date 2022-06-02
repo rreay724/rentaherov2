@@ -93,12 +93,17 @@ const Heroes = ({ heroes }) => {
           </div>
         </div>
       </div>
-      <div className="mx-auto grid grid-cols-2 gap-8 p-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {affiliation !== null
-          ? heroes
-              .filter((hero) => hero.affiliation === affiliation)
-              .map((hero) => <HeroesPageCard hero={hero} key={hero._id} />)
-          : heroes.map((hero) => <HeroesPageCard hero={hero} />)}
+      <div className="mx-auto py-10 px-10">
+        <h1 className="border-b border-white text-3xl text-white">
+          Our Heroes
+        </h1>
+        <div className="mx-auto grid grid-cols-2 gap-8 py-5 pt-10 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {affiliation !== null
+            ? heroes
+                .filter((hero) => hero.affiliation === affiliation)
+                .map((hero) => <HeroesPageCard hero={hero} key={hero._id} />)
+            : heroes.map((hero) => <HeroesPageCard hero={hero} />)}
+        </div>
       </div>
     </div>
   )
