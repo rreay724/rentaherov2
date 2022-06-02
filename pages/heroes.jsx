@@ -63,6 +63,7 @@ const Heroes = ({ heroes }) => {
                   <li
                     className="cursor-pointer"
                     onClick={() => setAffiliation(hero.affiliation)}
+                    key={hero._id}
                   >
                     {hero.affiliation}
                   </li>
@@ -96,7 +97,7 @@ const Heroes = ({ heroes }) => {
         {affiliation !== null
           ? heroes
               .filter((hero) => hero.affiliation === affiliation)
-              .map((hero) => <HeroesPageCard hero={hero} />)
+              .map((hero) => <HeroesPageCard hero={hero} key={hero._id} />)
           : heroes.map((hero) => <HeroesPageCard hero={hero} />)}
       </div>
     </div>

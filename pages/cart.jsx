@@ -19,10 +19,7 @@ const Cart = () => {
   const taxAmount = amount * 0.053
   const totalAmount = amount + taxAmount
 
-  console.log(taxAmount)
-
   const createOrder = async (data) => {
-    console.log('data:', data)
     try {
       const res = await axios.post('http://localhost:3000/api/orders', data)
       if (res.status === 201) {
@@ -102,7 +99,10 @@ const Cart = () => {
             <p className="pt-2">No heroes in cart</p>
           ) : (
             cart.heroes.map((hero) => (
-              <div className="items-center justify-between border-b border-black-default py-2 sm:flex sm:h-40 sm:py-0">
+              <div
+                key={hero._id}
+                className="items-center justify-between border-b border-black-default py-2 sm:flex sm:h-40 sm:py-0"
+              >
                 <div className="flex items-center pt-2">
                   <div>
                     <img
