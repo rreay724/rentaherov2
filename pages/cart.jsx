@@ -8,6 +8,7 @@ import {
   PayPalButtons,
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js'
+import { AiFillLock } from 'react-icons/ai'
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart)
@@ -15,6 +16,10 @@ const Cart = () => {
   const amount = cart.total
   const currency = 'USD'
   const style = { layout: 'vertical' }
+  const taxAmount = amount * 0.053
+  const totalAmount = amount + taxAmount
+
+  console.log(taxAmount)
 
   const createOrder = async (data) => {
     console.log('data:', data)
@@ -87,41 +92,74 @@ const Cart = () => {
   }
 
   return (
-    <div className="flex min-h-[80vh] justify-between bg-black-superDuperLight px-40">
-      <div className="m-10 rounded-md bg-gray-300 px-20 text-black-default">
+    <div className="min-h-[80vh] justify-center bg-gradient-to-r from-black-superLight to-black-superDuperLight lg:flex">
+      <div className="my-10 rounded-md bg-gray-100 px-10 text-black-default lg:min-w-[70rem]">
+        <h2 className="border-b border-black-default pt-10 text-lg font-semibold">
+          Hero Summary
+        </h2>
         <div>
-          {cart.heroes.map((hero) => (
-            <div className="flex h-40 w-[40rem] items-center justify-between space-x-10 pl-10">
-              <img
-                onClick={() => router.push(`/heroes/${hero._id}`)}
-                src={hero.img}
-                className="h-20 w-20 cursor-pointer rounded-md object-cover"
-              />
+          {cart.heroes.length === 0 ? (
+            <p className="pt-2">No heroes in cart</p>
+          ) : (
+            cart.heroes.map((hero) => (
+              <div className="flex h-40 items-center justify-between space-x-10 border-b border-black-default lg:w-[70rem]">
+                <div className="flex items-center space-x-10">
+                  <div>
+                    <img
+                      onClick={() => router.push(`/heroes/${hero._id}`)}
+                      src={hero.img}
+                      className="h-28 w-20 cursor-pointer rounded-md object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h2
+                      className="cursor-pointer font-bold "
+                      onClick={() => router.push(`/heroes/${hero._id}`)}
+                    >
+                      {hero.name}
+                    </h2>
+                    <p>Service: {hero.selectedService.text}</p>
+                  </div>
+                </div>
+                <div>
+                  <p>Hours: {hero.hours}</p>
+                </div>
 
-              <div>
-                <h2
-                  className="cursor-pointer font-bold "
-                  onClick={() => router.push(`/heroes/${hero._id}`)}
-                >
-                  {hero.name}
-                </h2>
-                <p>Hours: {hero.hours}</p>
-                <p>Service: {hero.selectedService.text}</p>
+                <span>${hero.price}.00</span>
               </div>
-
-              <span>${hero.price}.00</span>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
 
       {/* Checkout details */}
-      <div className="m-10 h-80 w-80 rounded-lg border-2 bg-gray-300 py-10 px-5 shadow-lg">
+      <div className="m-10 h-[22rem] w-80 rounded-lg border-2 bg-gray-100 px-5 pt-5 pb-10 shadow-lg">
         <div>
-          <div className="flex justify-between pt-20 pb-5">
-            <label>Total:</label>
-            <span>${cart.total}.00</span>
+          <div className="space-y-2">
+            <h2 className="font-semibold">Order Summary</h2>
+            <div>
+              <div className="flex justify-between text-sm">
+                <label>Product Subtotal</label>
+                <p>${cart.total}.00</p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <label>Estimated Travel Fee</label>
+                <p>Free</p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <label>Estimated Taxes</label>
+                <p>${parseFloat(taxAmount).toFixed(2)}</p>
+              </div>
+            </div>
+            <div className="border-b border-black-default" />
+            <div className="flex justify-between pb-5">
+              <label className="font-semibold">Total:</label>
+              <p className="font-semibold">
+                ${parseFloat(totalAmount).toFixed(2)}
+              </p>
+            </div>
           </div>
+
           <PayPalScriptProvider
             options={{
               'client-id': process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
@@ -132,6 +170,19 @@ const Cart = () => {
           >
             <ButtonWrapper currency={currency} showSpinner={false} />
           </PayPalScriptProvider>
+        </div>
+        <div className="mx-auto flex items-center pt-5">
+          <div className="pr-2">
+            <AiFillLock className="" />
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold">Security & Privacy</h3>
+            <p className="text-xs">
+              Every transaction on Rent-a-Hero is secure. Any personal
+              information you give us will be handled according to our{' '}
+              <span>Privacy Policy</span>.
+            </p>
+          </div>
         </div>
       </div>
       {/* <OrderDetails total={cart.total} createOrder={createOrder} /> */}
