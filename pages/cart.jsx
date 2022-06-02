@@ -92,9 +92,9 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-[80vh] justify-center space-y-5 bg-gradient-to-r from-black-superLight to-black-superDuperLight py-5 lg:flex lg:space-y-0">
-      <div className="mx-auto w-80 rounded-md bg-gray-100 px-10 py-10 text-black-default lg:min-w-[70rem]">
-        <h2 className="border-b border-black-default pt-10 text-lg font-semibold">
+    <div className="min-h-[80vh] justify-center space-y-5 bg-gradient-to-r from-black-superLight to-black-superDuperLight py-5 lg:space-y-0 xl:flex">
+      <div className="mx-auto my-5 w-80 rounded-md bg-gray-100 px-10 py-10 text-black-default  sm:w-[30rem] lg:w-[40rem] xl:my-0 xl:w-[50rem]">
+        <h2 className="border-b border-black-default py-5 text-lg font-semibold">
           Hero Summary
         </h2>
         <div>
@@ -102,8 +102,8 @@ const Cart = () => {
             <p className="pt-2">No heroes in cart</p>
           ) : (
             cart.heroes.map((hero) => (
-              <div className="flex h-40 items-center justify-between border-b border-black-default">
-                <div className="flex items-center">
+              <div className="items-center justify-between border-b border-black-default py-2 sm:flex sm:h-40 sm:py-0">
+                <div className="flex items-center pt-2">
                   <div>
                     <img
                       onClick={() => router.push(`/heroes/${hero._id}`)}
@@ -135,7 +135,7 @@ const Cart = () => {
       </div>
 
       {/* Checkout details */}
-      <div className="mx-auto  h-[22rem] w-80 rounded-lg border-2 bg-gray-100 px-5 pt-5  shadow-lg">
+      <div className="mx-auto  h-[22rem] w-80 rounded-lg border-2 bg-gray-100 px-5 pt-5 shadow-lg  sm:w-[30rem] lg:w-[40rem] xl:w-[30rem]">
         <div>
           <div className="space-y-2">
             <h2 className="font-semibold">Order Summary</h2>
