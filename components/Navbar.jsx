@@ -7,7 +7,7 @@ const Header = () => {
   const router = useRouter()
   const quantity = useSelector((state) => state.cart.quantity)
   return (
-    <div className="sticky top-0 z-50 flex items-center justify-between bg-black-default px-10 py-5 text-white md:justify-between">
+    <div className="sticky top-0 z-[999] flex items-center justify-between bg-black-default px-10 py-5 text-white md:justify-between">
       <div className="hidden md:flex">
         <h1 className="text-2xl font-bold md:visible">Rent-a-Hero</h1>
       </div>

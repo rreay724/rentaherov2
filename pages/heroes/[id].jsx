@@ -37,7 +37,7 @@ const Hero = ({ hero }) => {
           />
           <div className="flex justify-center py-10">
             {hero.additionalImages.map((image) => (
-              <div className="px-2">
+              <div className="px-2" key={image.src}>
                 <img
                   src={image.src}
                   className="h-20 w-20 cursor-pointer object-cover"
