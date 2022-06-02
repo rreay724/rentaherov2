@@ -168,7 +168,7 @@ const Cart = () => {
               'client-id': process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
               components: 'buttons',
               currency: 'USD',
-              'disable-funding': 'credit,card',
+              'disable-funding': 'card,paylater',
             }}
           >
             <ButtonWrapper currency={currency} showSpinner={false} />
