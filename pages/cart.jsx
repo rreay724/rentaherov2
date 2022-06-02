@@ -135,7 +135,7 @@ const Cart = () => {
       </div>
 
       {/* Checkout details */}
-      <div className="mx-auto h-[22rem]  w-80 rounded-lg border-2 bg-gray-100 px-10 pt-5 shadow-lg sm:w-[30rem]  md:px-12 lg:w-[40rem] xl:w-[30rem]">
+      <div className="mx-auto h-[22rem]  w-80 rounded-lg border-2 bg-gray-100 px-5 pt-5 shadow-lg sm:w-[30rem]  md:px-12 lg:w-[40rem] xl:w-[30rem]">
         <div>
           <div className="space-y-2">
             <h2 className="font-semibold">Order Summary</h2>
