@@ -174,8 +174,8 @@ const Cart = () => {
           </PayPalScriptProvider>
         </div>
         <div className="mx-auto flex items-center pt-5">
-          <div className="pr-2">
-            <AiFillLock className="" />
+          <div className="pr-3">
+            <AiFillLock size={'2rem'} />
           </div>
           <div>
             <h3 className="text-sm font-semibold">Security & Privacy</h3>
