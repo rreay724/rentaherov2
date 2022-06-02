@@ -93,7 +93,7 @@ const Cart = () => {
 
   return (
     <div className="min-h-[80vh] justify-center space-y-5 bg-gradient-to-r from-black-superLight to-black-superDuperLight py-5 lg:space-y-0 xl:flex">
-      <div className="mx-auto my-5 w-80 rounded-md bg-gray-100 px-10 py-10 text-black-default  sm:w-[30rem] lg:w-[40rem] xl:my-0 xl:w-[50rem]">
+      <div className="mx-auto my-5 w-80 rounded-md bg-gray-100 px-10 py-10 text-black-default  sm:w-[30rem] lg:w-[40rem] xl:my-0 xl:w-[50rem] 2xl:w-[60rem]">
         <h2 className="border-b border-black-default py-5 text-lg font-semibold">
           Hero Summary
         </h2>
@@ -135,7 +135,7 @@ const Cart = () => {
       </div>
 
       {/* Checkout details */}
-      <div className="mx-auto  h-[22rem] w-80 rounded-lg border-2 bg-gray-100 px-5 pt-5 shadow-lg  sm:w-[30rem] lg:w-[40rem] xl:w-[30rem]">
+      <div className="mx-auto h-[22rem]  w-80 rounded-lg border-2 bg-gray-100 px-10 pt-5 shadow-lg sm:w-[30rem]  md:px-12 lg:w-[40rem] xl:w-[30rem]">
         <div>
           <div className="space-y-2">
             <h2 className="font-semibold">Order Summary</h2>
@@ -182,7 +182,13 @@ const Cart = () => {
             <p className="text-xs">
               Every transaction on Rent-a-Hero is secure. Any personal
               information you give us will be handled according to our{' '}
-              <span>Privacy Policy</span>.
+              <span
+                className="cursor-pointer font-semibold text-blue-700 hover:text-blue-500"
+                onClick={() => router.push('/privacy')}
+              >
+                Privacy Policy
+              </span>
+              .
             </p>
           </div>
         </div>
