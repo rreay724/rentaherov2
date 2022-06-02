@@ -74,7 +74,7 @@ const Hero = ({ hero }) => {
                     key={service.text}
                     value={JSON.stringify(service)}
                   >
-                    {service.text}
+                    {service.text} - ${service.price}.00
                   </option>
                 ))}
               </select>
