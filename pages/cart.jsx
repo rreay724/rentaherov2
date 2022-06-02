@@ -9,13 +9,14 @@ import {
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js'
 import { AiFillLock } from 'react-icons/ai'
+import { PayPalButton } from 'react-paypal-button-v2'
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart)
   const router = useRouter()
   const amount = cart.total
   const currency = 'USD'
-  const style = { layout: 'vertical' }
+  const style = { layout: 'vertical', color: 'blue', shape: 'pill' }
   const taxAmount = amount * 0.053
   const totalAmount = amount + taxAmount
 
@@ -167,7 +168,7 @@ const Cart = () => {
               'client-id': process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
               components: 'buttons',
               currency: 'USD',
-              'disable-funding': 'credit,card,venmo',
+              'disable-funding': 'credit,card',
             }}
           >
             <ButtonWrapper currency={currency} showSpinner={false} />
