@@ -60,7 +60,7 @@ const Cart = () => {
         <PayPalButtons
           style={style}
           disabled={false}
-          forceReRender={[amount, currency, style]}
+          forceReRender={[parseFloat(totalAmount).toFixed(2), currency, style]}
           fundingSource={undefined}
           createOrder={(data, actions) => {
             return actions.order
@@ -69,7 +69,7 @@ const Cart = () => {
                   {
                     amount: {
                       currency_code: currency,
-                      value: amount,
+                      value: parseFloat(totalAmount).toFixed(2),
                     },
                   },
                 ],
@@ -86,7 +86,7 @@ const Cart = () => {
               createOrder({
                 customer: shipping.name.full_name,
                 address: shipping.address.address_line_1,
-                total: cart.total,
+                total: parseFloat(totalAmount).toFixed(2),
                 method: 1,
               })
             })
