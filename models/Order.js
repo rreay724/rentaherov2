@@ -10,7 +10,7 @@ const OrderSchema = new mongoose.Schema(
 
     address: { type: String, required: true, maxLength: 200 },
 
-    phoneNumber: { type: String, required: true, maxLength: 12 },
+    // phoneNumber: { type: String, required: true, maxLength: 12 },
 
     total: {
       type: Number,
