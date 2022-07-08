@@ -10,6 +10,7 @@ import {
 } from '@paypal/react-paypal-js'
 import { AiFillLock } from 'react-icons/ai'
 import { PayPalButton } from 'react-paypal-button-v2'
+import axios from 'axios'
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart)
@@ -19,8 +20,11 @@ const Cart = () => {
   const style = { layout: 'vertical', color: 'blue', shape: 'pill' }
   const taxAmount = amount * 0.053
   const totalAmount = amount + taxAmount
+  const dispatch = useDispatch()
 
   const createOrder = async (data) => {
+    console.log('data:', data)
+
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_HOST_URL}/api/orders`,
@@ -56,7 +60,7 @@ const Cart = () => {
         <PayPalButtons
           style={style}
           disabled={false}
-          forceReRender={[amount, currency, style]}
+          forceReRender={[parseFloat(totalAmount).toFixed(2), currency, style]}
           fundingSource={undefined}
           createOrder={(data, actions) => {
             return actions.order
@@ -65,7 +69,7 @@ const Cart = () => {
                   {
                     amount: {
                       currency_code: currency,
-                      value: amount,
+                      value: parseFloat(totalAmount).toFixed(2),
                     },
                   },
                 ],
@@ -82,7 +86,7 @@ const Cart = () => {
               createOrder({
                 customer: shipping.name.full_name,
                 address: shipping.address.address_line_1,
-                total: cart.total,
+                total: parseFloat(totalAmount).toFixed(2),
                 method: 1,
               })
             })
