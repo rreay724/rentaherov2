@@ -1,13 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { HeroCard, Services } from '../components/index'
+import { HeroCard, Services, Add, AddButton } from '../components/index'
 import axios from 'axios'
 
-const Home = ({ heroes }) => {
+const Home = ({ heroes, admin }) => {
   const router = useRouter()
   const heroArray = [...heroes].sort(() => 0.5 - Math.random())
+  const [close, setClose] = useState(true)
+
   return (
     <div className="">
       <Head>
@@ -35,11 +37,14 @@ const Home = ({ heroes }) => {
           </div>
         </div>
       </div>
+      {/* {admin && <AddButton setClose={setClose} />}
+      {!close && <Add setClose={setClose} />} */}
       {/* Middle Section */}
       <div className="bg-gradient-to-b from-black-superLight to-black-superDuperLight px-0 md:px-20">
         <Services />
       </div>
       {/* Bottom section */}
+
       <div className="items-center  bg-gradient-to-t from-black-superLight to-black-superDuperLight md:px-28 lg:px-10 xl:px-36">
         <h2 className="pt-5 text-center text-3xl font-bold text-white ">
           Featured Heroes
@@ -57,12 +62,19 @@ const Home = ({ heroes }) => {
 
 export default Home
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
+  const myCookie = context.req?.cookies || ''
+  let admin = false
+
+  if (myCookie.token === process.env.NEXT_PUBLIC_TOKEN) {
+    admin = true
+  }
   const res = await axios.get(`${process.env.NEXT_PUBLIC_HOST_URL}/api/heroes`)
 
   return {
     props: {
       heroes: res.data,
+      admin,
     },
   }
 }
