@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addHero } from '../../redux/cartSlice'
+import toast from 'react-hot-toast'
 
 const Hero = ({ hero }) => {
   const quantity = 1
@@ -23,7 +24,15 @@ const Hero = ({ hero }) => {
   }
 
   const handleClick = () => {
-    dispatch(addHero({ ...hero, selectedService, price, quantity, hours }))
+    const notification = toast.loading('Creating new post...')
+    try {
+      dispatch(addHero({ ...hero, selectedService, price, quantity, hours }))
+      toast.success('Hero added to cart!', { id: notification })
+    } catch (error) {
+      toast.error('Whoops, something went wrong! Please try again.', {
+        id: notification,
+      })
+    }
   }
 
   return (
