@@ -20,8 +20,9 @@ const Header = () => {
             Heroes
           </li>
           <li className="navbar-item">About</li>
-          <li className="navbar-item">Contact</li>
-          <li className="navbar-item"></li>
+          <li onClick={() => router.push('/contact')} className="navbar-item">
+            Contact
+          </li>
         </ul>
       </div>
       <Link href="/cart" passHref>
